@@ -1,8 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import './login.css';
 export default function Login() {
     const { signInUsingGoogle } = useAuth();
+    const location = useLocation();
+    const history = useHistory();
+    console.log('came form ', location.state?.from.pathname);
+    const redirect_url = location.state?.from.pathname || '/';
+    const handleGoogleSignIn = () => {
+        signInUsingGoogle()
+            .then(result => { history.push(redirect_url) }).then(error => { console.log(error) })
+    }
     return (
         <div className='login-form'>
             <div>
@@ -17,7 +25,7 @@ export default function Login() {
                 <p>new to ema john? <Link to="/register">Create an account!</Link> </p>
                 <div>-----------or---------</div>
                 <div>
-                    <button onClick={signInUsingGoogle}>Login with Google</button>
+                    <button onClick={handleGoogleSignIn}>Login with Google</button>
                 </div>
             </div>
         </div>
