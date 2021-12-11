@@ -5,7 +5,6 @@ export default function Shipping() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { user } = useAuth();
     const onSubmit = data => {
-        console.log(data)
     }
 
     return (

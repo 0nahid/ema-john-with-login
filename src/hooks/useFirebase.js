@@ -10,7 +10,7 @@ const useFirebase = () => {
         return signInWithPopup(auth, googleProvider);
     }
     const logOut = () => {
-        signOut(auth).then(result => { console.log(result) }).then(error => { console.log(error) })
+        signOut(auth).then(result => { }).then(error => { })
     }
     useEffect(() => {
         auth.onAuthStateChanged(user => {

@@ -5,7 +5,6 @@ export default function Login() {
     const { signInUsingGoogle } = useAuth();
     const location = useLocation();
     const history = useHistory();
-    console.log('came form ', location.state?.from.pathname);
     const redirect_url = location.state?.from.pathname || '/';
     const handleGoogleSignIn = () => {
         signInUsingGoogle()
